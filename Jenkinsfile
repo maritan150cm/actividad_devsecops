@@ -52,6 +52,8 @@ pipeline {
             steps {
                 echo 'Analizando dependencias con OWASP Dependency-Check...'
 
+                sh 'mkdir -p dependency-check-reports'
+
                 dependencyCheck(
                     additionalArguments: '--scan . --format XML --format HTML --out dependency-check-reports',
                     odcInstallation: 'Dependency-Check'
