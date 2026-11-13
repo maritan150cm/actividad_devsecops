@@ -56,8 +56,9 @@ pipeline {
 
                 dependencyCheck(
                     additionalArguments: '--scan . --format XML --format HTML --out dependency-check-reports',
-                    odcInstallation: 'Dependency-Check'
-                )
+                    odcInstallation: 'Dependency-Check',
+                    nvdCredentialsId: 'nvd-api-key'
+                )  
 
                 dependencyCheckPublisher(
                     pattern: 'dependency-check-reports/dependency-check-report.xml'
