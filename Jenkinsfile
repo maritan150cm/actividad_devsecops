@@ -55,7 +55,7 @@ pipeline {
                 sh 'mkdir -p dependency-check-reports'
 
                 dependencyCheck(
-                    additionalArguments: '--scan . --format XML --format HTML --out dependency-check-reports',
+                    additionalArguments: '--enableExperimental --scan . --format XML --format HTML --out dependency-check-reports',
                     odcInstallation: 'Dependency-Check',
                     nvdCredentialsId: 'nvd-api-key'
                 )  
