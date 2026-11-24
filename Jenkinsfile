@@ -82,7 +82,7 @@ pipeline {
 
                 script {
                     def zapStatus = sh(
-                        script: 'docker run --rm --network devsecops-net ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://${TEST_CONTAINER}:5000',
+                        script: 'docker run --rm --network devsecops-net --volumes-from jenkins -w "$WORKSPACE" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://${TEST_CONTAINER}:5000 -r zap-report.html',
                         returnStatus: true
                     )
 
