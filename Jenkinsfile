@@ -32,7 +32,7 @@ pipeline {
         stage('Documentation') {
             steps {
                 echo 'Generando documentacion del proyecto con Doxygen...'
-                sh 'docker run --rm -v "$WORKSPACE:/data" -w /data nakatt/doxygen Doxyfile'
+                sh 'docker run --rm --volumes-from jenkins -w "$WORKSPACE" nakatt/doxygen Doxyfile'
                 echo 'Documentacion HTML generada correctamente.'
             }
         }
